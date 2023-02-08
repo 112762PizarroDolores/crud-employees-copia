@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import EmployeeForm from './components/EmployeeForm';
+import FullFeaturedCrudGrid from './components/EmployeesList'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import EmployeesList from './components/EmployeesList';
+import EmployeeEdit from './components/EmployeeEdit';
+import NavBar from './components/NavBar' 
+
 
 function App() {
-  return (
+   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+       <NavBar/> 
+      <Routes>
+        <Route path="/"element={<FullFeaturedCrudGrid/>}/> 
+        <Route path="/create-employee" element={<EmployeeForm />}/> 
+        <Route path="/edit-employee/:id" element={<EmployeeEdit />}/> 
+      </Routes>
+      
+    
+{/* 
+<EmployeeForm/>
+<FullFeaturedCrudGrid/> */}
+{/* <EmployeesList/> */}
+      </BrowserRouter>
+     
     </div>
   );
 }
